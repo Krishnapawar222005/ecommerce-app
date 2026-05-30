@@ -25,15 +25,14 @@ function Products({ cart, setCart }) {
     setCart([...cart, product]);
   };
 
-  console.log("Current products state:", products);
-
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar cartCount={cart.length} />
 
+      {/* Hero Section */}
       <div className="text-center py-20">
         <h1 className="text-7xl font-bold text-purple-400">
-          NeoStore
+          NeoStore v2
         </h1>
 
         <p className="text-gray-400 text-xl mt-6">
@@ -45,36 +44,44 @@ function Products({ cart, setCart }) {
         </button>
       </div>
 
-      <div className="text-center text-yellow-400 mb-4">
+      {/* Debug Counter */}
+      <div className="text-center text-yellow-400 text-xl mb-8">
         Total Products Loaded: {products.length}
       </div>
 
+      {/* Products Grid */}
       <div className="grid md:grid-cols-3 gap-8 p-8">
-        {products.map((product) => (
-          <div
-            key={product._id}
-            className="bg-gray-900 rounded-3xl p-6 border border-purple-500 shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <h3 className="text-2xl font-bold">
-              {product.name}
-            </h3>
-
-            <p className="text-gray-400 mt-2">
-              {product.description}
-            </p>
-
-            <p className="text-purple-400 text-xl mt-4">
-              ₹{product.price}
-            </p>
-
-            <button
-              onClick={() => addToCart(product)}
-              className="mt-4 w-full bg-purple-600 hover:bg-purple-700 py-2 rounded-lg"
-            >
-              Add To Cart
-            </button>
+        {products.length === 0 ? (
+          <div className="text-center col-span-3 text-red-400 text-2xl">
+            No Products Found
           </div>
-        ))}
+        ) : (
+          products.map((product) => (
+            <div
+              key={product._id}
+              className="bg-gray-900 rounded-3xl p-6 border border-purple-500 shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              <h3 className="text-2xl font-bold">
+                {product.name}
+              </h3>
+
+              <p className="text-gray-400 mt-2">
+                {product.description}
+              </p>
+
+              <p className="text-purple-400 text-xl mt-4">
+                ₹{product.price}
+              </p>
+
+              <button
+                onClick={() => addToCart(product)}
+                className="mt-4 w-full bg-purple-600 hover:bg-purple-700 py-2 rounded-lg"
+              >
+                Add To Cart
+              </button>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
