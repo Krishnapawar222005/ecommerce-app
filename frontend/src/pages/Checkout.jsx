@@ -34,58 +34,50 @@ function Checkout() {
 
   return (
     <div className="min-h-screen bg-black text-white p-10">
-      <h1 className="text-5xl font-bold text-purple-400">
+      <h1 className="text-5xl font-bold text-purple-400 mb-8">
         Checkout
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-8 flex flex-col gap-4 max-w-md"
+        className="flex flex-col gap-4 max-w-md"
       >
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Enter Name"
           value={form.name}
           onChange={(e) =>
-            setForm({
-              ...form,
-              name: e.target.value,
-            })
+            setForm({ ...form, name: e.target.value })
           }
-          className="p-3 rounded text-black"
+          className="p-3 rounded-lg bg-gray-800 text-white border border-purple-500"
           required
         />
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Enter Email"
           value={form.email}
           onChange={(e) =>
-            setForm({
-              ...form,
-              email: e.target.value,
-            })
+            setForm({ ...form, email: e.target.value })
           }
-          className="p-3 rounded text-black"
+          className="p-3 rounded-lg bg-gray-800 text-white border border-purple-500"
           required
         />
 
         <textarea
-          placeholder="Address"
+          placeholder="Enter Address"
           value={form.address}
           onChange={(e) =>
-            setForm({
-              ...form,
-              address: e.target.value,
-            })
+            setForm({ ...form, address: e.target.value })
           }
-          className="p-3 rounded text-black"
+          className="p-3 rounded-lg bg-gray-800 text-white border border-purple-500"
+          rows="4"
           required
         />
 
         <button
           type="submit"
-          className="bg-purple-600 hover:bg-purple-700 p-3 rounded"
+          className="bg-purple-600 hover:bg-purple-700 p-3 rounded-lg font-bold"
         >
           Place Order
         </button>
